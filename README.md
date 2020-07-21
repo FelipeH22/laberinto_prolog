@@ -1,2 +1,2 @@
-# laberinto_prolog
-Laberinto resuelto mediante prolog y python
+# Laberinto en prolog
+_Laberinto resuelto mediante prolog y python_
