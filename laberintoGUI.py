@@ -66,3 +66,4 @@ def start(nivel):
 
 pen = Pen()
 start(nivel[0])
+turtle.done()
