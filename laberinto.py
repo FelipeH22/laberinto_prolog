@@ -1,4 +1,4 @@
-from pyswip import Prolog
+#from pyswip import Prolog
 
 def p_fila(lis,lista):
     if lis == []:
@@ -12,20 +12,21 @@ def p_fila(lis,lista):
     return lista
 
 def abre_archivo(archivo_txt):
-    return [[elemento for elemento in x if(elemento!='\n' and elemento!=' ')]for x in open(archivo_txt,"r").readlines() ]
+    lista = [x.split(' ') for x in open(archivo_txt,"r").readlines()]
+    return lista
 
 def hechos(lista):
     return "conecta({},{})".format(str(lista[0]),str(lista[1]))
 
 lis = abre_archivo("laberinto.txt")
-#print(lis)
-lista_hechos = p_fila(lis,[])
-print(list(map(hechos,lista_hechos)))
-prolog = Prolog()
-prolog.consult('laberinto.pl')
+print(lis)
+#lista_hechos = p_fila(lis,[])
+#print(list(map(hechos,lista_hechos)))
+#prolog = Prolog()
+#prolog.consult('laberinto.pl')
 
-"""for i in list(map(hechos,lista_hechos)):
-    print(i)
-    prolog.assertz(i)
-print(list(prolog.query("conecta(i,2)")))"""
-print(list(prolog.query('sol')))
+#"""for i in list(map(hechos,lista_hechos)):
+#    print(i)
+#    prolog.assertz(i)
+#print(list(prolog.query("conecta(i,2)")))"""
+#print(list(prolog.query('sol')))
