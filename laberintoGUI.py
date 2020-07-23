@@ -67,3 +67,24 @@ def start(nivel):
 pen = Pen()
 start(nivel[0])
 turtle.done()
+
+conecta(i, 2).
+conecta(1, 7).
+conecta(2, 3).
+conecta(2, 8).
+conecta(3, 4).
+conecta(3, 9).
+conecta(4, 10).
+conecta(5, 6).
+conecta(5, 11).
+conecta(7, 13).
+conecta(8, 9).
+conecta(10, 16).
+conecta(11, 17).
+conecta(12, 18).
+conecta(13, 14).
+conecta(14, 15).
+conecta(14, f).
+conecta(16, 22).
+conecta(22, 21).
+conecta(21, 15).
