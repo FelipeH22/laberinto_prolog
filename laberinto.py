@@ -1,5 +1,4 @@
 from pyswip import *
-import re
 def p_fila(lis,lista):
     if lis == []:
         return None
@@ -40,20 +39,33 @@ def hechos(lista):
 def quitar(lista):
     return list( filter(lambda x: x != "|", lista))
 
-lis = abre_archivo("laberinto.txt")
-#print(lis)
-lista = p_fila(lis,[])
-lista2 = list(map(quitar,lis))
-#print(lista2)
-lista_hechos = p_col(lista2,[])
-lista_final= lista+lista_hechos
-print(lista_final)
-#print(list(map(hechos,lista_hechos)))
+lista_archivo = abre_archivo("laberinto.txt")
+parejas_fila = p_fila(lista_archivo,[]) # Obtener parejas que se encuentran en la misma fila
+lista_limpia = list(map(quitar,lista_archivo)) #Se quitan "|" de las listas.
+parejas_columna = p_col(lista_limpia,[])# Obtener parejas que se encuentran en la misma columna 
+lista_hechos= parejas_fila+parejas_columna #Lista con parejas de filas y columnas
 
 prolog = Prolog()
-prolog.consult('laberinto.pl')
-for i in list(map(hechos,lista_final)):
-    print(i)
+
+for i in list(map(hechos,lista_hechos)):# Se crean hechos de forma dinámica
     prolog.assertz(i)
 
-list(prolog.query('sol'))
+#Reglas para obtener la solución del laberinto
+prolog.assertz('conectado(Pos1,Pos2) :- conecta(Pos1,Pos2)')
+prolog.assertz('conectado(Pos1,Pos2) :- conecta(Pos2,Pos1)')
+prolog.assertz('miembro(X,[X|_])')
+prolog.assertz('miembro(X,[_|Y]) :- miembro(X,Y)')
+prolog.assertz('camino([f|RestoDelCamino],[f|RestoDelCamino])')
+prolog.assertz('camino([PosActual|RestoDelCamino],Sol) :- conectado(PosActual,PosSiguiente),'
+                '\+ miembro(PosSiguiente,RestoDelCamino),'
+                'camino([PosSiguiente,PosActual|RestoDelCamino],Sol)')
+
+
+soluciones_lab = []
+x = []
+for i in prolog.query('camino([i],Sol)'):#Obtener las soluciones al laberinto
+    soluciones_lab.append(i)
+
+for i in soluciones_lab:#Almacenar las soluciones en la lista x
+    x.append(i['Sol'])
+print(x)
