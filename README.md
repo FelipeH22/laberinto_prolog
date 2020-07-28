@@ -13,22 +13,57 @@ _Laberinto resuelto mediante prolog y python_
 
 
 #### Ejecutar proyecto
+Creando un entorno virtual dentro del proyecto.
 ```
-~$ 
+~$ pip install virtualenv
+~$ virtualenv envProlog
+```
+Windows
+```
+~$ source envProlog/Script/active
+~$ cd web
+```
+Linux
+```
+~$ source envProlog/bin/active
+~$ cd web
+```
+Instalar librerías
+```
+~$ pip install -r requirements.txt
+```
+Ejecutar proyecto
+```
+~$ python manage.py runserver
 ```
 
-#### Ejecutar método específico
+#### Ejecutar por consola
 ```
-?- 
-```
+~$ cd web/web
+~$ python laberinto.py
 
+```
 
 #### Estructura del proyecto
-+ laberinto.pl
-+ laberinto.png
-+ laberinto.py
-+ laberinto.txt
-+ Readme.md
++ web/
+    + web/
+    + static/
+    + templates/
+    + manage.py
+    + generador_django.py
++ README.md
++ requirements.txt
+
+
+#### SECRET_KEY
+En caso de tener problemas con el SECRET_KEY, para ejecutar el proyecto en Django
+ejecutar el siguiente archivo dentro del web/
+```
+~$ python laberinto.py
+
+```
+copiar el código en el archivo settings.py en del proyecto principal de Django.
+
 
 #### Equipo de trabajo
 
