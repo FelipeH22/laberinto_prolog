@@ -1,5 +1,5 @@
-# Ejercicio 8: Laberinto/prolog y python
-### Laberinto desarrollado en Prolog y Python
+# Laberinto desarrollado en Python y Prolog con interfaz web
+### _Laberinto desarrollado con Prolog y Python en entorno web usando DJango_
 ##### Modelos de programación II - G.020-82
 
 Laberinto estableciendo una comunicación entre Python y Prolog
