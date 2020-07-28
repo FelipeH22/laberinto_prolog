@@ -39,7 +39,7 @@ def hechos(lista):
 def quitar(lista):
     return list( filter(lambda x: x != "|", lista))
 
-lista_archivo = abre_archivo("../static/laberinto.txt")
+lista_archivo = abre_archivo("C:/Users/jfher/Desktop/2020-1/Modelos 2/laberinto_prolog/laberinto.txt")
 parejas_fila = p_fila(lista_archivo,[]) # Obtener parejas que se encuentran en la misma fila
 lista_limpia = list(map(quitar,lista_archivo)) #Se quitan "|" de las listas.
 parejas_columna = p_col(lista_limpia,[])# Obtener parejas que se encuentran en la misma columna 
@@ -68,4 +68,15 @@ for i in prolog.query('camino([i],Sol)'):#Obtener las soluciones al laberinto
 
 for i in soluciones_lab:#Almacenar las soluciones en la lista x
     x.append(i['Sol'])
-print(x)
+lista_def = []
+lista_temp=[]
+for w in x:
+    lista_temp.clear()
+    for elemento in w:
+        if(type(elemento) is not int):
+            lista_temp.append(Atom.get_value(elemento))
+        else:
+            lista_temp.append(elemento)
+    lista_def.append(lista_temp)
+print(lista_def)
+

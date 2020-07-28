@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from web.vistas import muestra_laberinto
+from web.vistas import muestra_laberinto, resuelve_laberinto
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', muestra_laberinto)
+    path('', muestra_laberinto),
+    path('solucion/', resuelve_laberinto)
 ]
