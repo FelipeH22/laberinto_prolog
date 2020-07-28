@@ -56,10 +56,9 @@ Ejecutar proyecto
 
 
 #### SECRET_KEY
-En caso de tener problemas con el SECRET_KEY, para ejecutar el proyecto en Django
-ejecutar el siguiente archivo dentro del web/
+En caso de tener problemas con el SECRET_KEY, ejecutar el archivo/
 ```
-~$ python laberinto.py
+~$ python generador_django.py
 
 ```
 copiar el código en el archivo settings.py en del proyecto principal de Django.
